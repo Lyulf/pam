@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:theme="@style/AdvancedCalcTheme"
+        android:layout_height="match_parent">
+
+    <TextView
+            android:id="@+id/advCalc_txv_display"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/calc_display_height"
+            android:text="" />
+
+    <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="ButtonStyle"
+            android:orientation="vertical">
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            <Button
+                    android:id="@+id/advCalc_btn_pi"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_pi_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_ln"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_ln_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_percent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_percent_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_clear"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_clear_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_back_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_div"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_div_name" />
+
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            <Button
+                    android:id="@+id/advCalc_btn_tan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_tan_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_log"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_log_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_7_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_8_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_9_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_mul"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_mul_name" />
+
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            <Button
+                    android:id="@+id/advCalc_btn_cos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_cos_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_sqrt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_sqrt_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_4_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_5_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_6_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_sub_name" />
+
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            <Button
+                    android:id="@+id/advCalc_btn_sin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_sin_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_powY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_powY_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_1_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_2_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_3_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_add_name" />
+
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            <Button
+                    android:id="@+id/advCalc_btn_openingParenthesis"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_openingParenthesis_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_closingParenthesis"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_closingParenthesis_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_negate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_negate_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_0_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_dot"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_dot_name" />
+
+            <Button
+                    android:id="@+id/advCalc_btn_equals"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/button_equals_name" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

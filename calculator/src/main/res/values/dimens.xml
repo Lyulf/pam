@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="mainMenu_title_textSize">75dp</dimen>
+    <dimen name="mainMenu_btn_textSize">50dp</dimen>
+    <dimen name="sCalc_btn_textSize">50dp</dimen>
+    <dimen name="advCalc_btn_textSize">30dp</dimen>
+    <dimen name="mainMenu_btn_spacing">20dp</dimen>
+    <dimen name="sCalc_display_textSize">40dp</dimen>
+    <dimen name="advCalc_display_textSize">34dp</dimen>
+    <dimen name="calc_display_height">75dp</dimen>
+</resources>

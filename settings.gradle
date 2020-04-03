@@ -1,0 +1,3 @@
+include ':app', ':calculator', ':astro'
+
+project(':calculator').projectDir = file("C:\\Users\\Lyulf\\AndroidStudioProjects\\PAM\\calculator")

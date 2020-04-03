@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/linearLayout"
+        android:theme="@style/MainMenuTheme"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+            android:id="@+id/menu_txv_title"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:text="@string/app_name"
+            app:layout_constraintBottom_toTopOf="@+id/menu_btn_simpleCalculator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+            android:id="@+id/menu_btn_simpleCalculator"
+            android:layout_width="411dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/mainMenu_btn_spacing"
+            android:text="@string/button_simple_calculator_name"
+            app:layout_constraintBottom_toTopOf="@+id/menu_btn_advancedCalculator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+            android:id="@+id/menu_btn_advancedCalculator"
+            android:layout_width="411dp"
+            android:layout_height="wrap_content"
+            android:text="@string/button_advanced_calculator_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+            android:id="@+id/menu_btn_exit"
+            android:layout_width="411dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/mainMenu_btn_spacing"
+            android:text="@string/button_exit_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menu_btn_advancedCalculator" />
+</androidx.constraintlayout.widget.ConstraintLayout>
