@@ -24,7 +24,7 @@ android {
 
 dependencies {
     implementation project(path: ':calculator', configuration: 'default')
-    implementation project(path: ':astro', configuration: 'default')
+    implementation project(configuration: 'default', path: ':astrology')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'

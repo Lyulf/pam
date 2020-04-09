@@ -11,7 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/astro" />
+            <option value="$PROJECT_DIR$/astrology" />
             <option value="$PROJECT_DIR$/calculator" />
           </set>
         </option>
