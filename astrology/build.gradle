@@ -6,6 +6,20 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 
     defaultConfig {
         applicationId "com.android.pam.astro"
@@ -30,12 +44,11 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation files('libs/astrocalculator.jar')
     implementation "androidx.room:room-runtime:$roomVersion"
-    annotationProcessor "androidx.room:room-compiler:$roomVersion" // For Kotlin use kapt instead of annotationProcessor
+    kapt "androidx.room:room-compiler:$roomVersion" // For Kotlin use kapt instead of annotationProcessor
 
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:$roomVersion"
@@ -53,6 +66,9 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$dagger2Version"
     implementation "com.google.dagger:dagger-android-support:$dagger2Version"
 
-    kapt "com.google.code.gson:gson:2.8.5"
+    implementation "com.google.code.gson:gson:2.8.6"
+
+    testImplementation "io.kotest:kotest-runner-junit5-jvm:$kotestVersion" // for kotest framework
+    testImplementation "io.kotest:kotest-assertions-core-jvm:$kotestVersion" // for kotest core jvm assertions
 
 }

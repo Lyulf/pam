@@ -33,6 +33,7 @@ ext {
     androidxArchVersion = '2.1.0'
     coreTestingVersion = "2.1.0"
     coroutines = '1.3.2'
-    materialVersion = "1.0.0"
-    dagger2Version = '2.20'
+    materialVersion = '1.1.0'
+    dagger2Version = '2.27'
+    kotestVersion = '4.0.2'
 }
