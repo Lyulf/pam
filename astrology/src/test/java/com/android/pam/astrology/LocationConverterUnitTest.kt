@@ -10,15 +10,15 @@ class LocationConverterUnitTest : StringSpec({
     "locationToJson should convert Location to String" {
         val converter = LocationConverter()
         val location = Location(10.0, 20.0)
-        converter.locationToJson(location) shouldBe """{"length":10.0,"width":20.0}"""
+        converter.locationToJson(location) shouldBe """{"latitude":10.0,"longitude":20.0}"""
     }
     "locationFromJson should convert String to Location" {
         val converter = LocationConverter()
-        val json = """{"length":10.0,"width":20.0}"""
+        val json = """{"latitude":10.0,"longitude":20.0}"""
         val location = converter.locationFromJson(json)
         assertSoftly {
-            location.length shouldBe 10.0
-            location.width shouldBe 20.0
+            location.latitude shouldBe 10.0
+            location.longitude shouldBe 20.0
         }
     }
 })
