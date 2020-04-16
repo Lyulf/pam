@@ -28,16 +28,16 @@ class AstroCalculatorWrapper @Inject constructor(
             return AstroCalculator(astroDateTime, location)
         }
 
-    fun refresh() {
+    override fun refresh() {
         val cal = Calendar.getInstance()
         astroDateTime = cal.toAstro()
     }
 
-    fun updateSettings() {
+    override fun updateSettings() {
         location = repository.getLocation().toAstroLocation()
     }
 
-    fun moon(): Moon {
+    override fun moon(): Moon {
         val moonInfo = astroCalculator.moonInfo
         val moonrise = Moonrise(
             moonInfo.moonrise.toTime()
@@ -55,12 +55,13 @@ class AstroCalculatorWrapper @Inject constructor(
             moonInfo.illumination
         )
         val dayOfSynodicMonth = moonInfo.age.toInt()
+
         return Moon(
             moonrise, moonset, nextNewMoon, nextFullMoon, moonPhase, dayOfSynodicMonth
         )
     }
 
-    fun sun(): Sun {
+    override fun sun(): Sun {
         val sunInfo = astroCalculator.sunInfo
         val sunrise = Sunrise(
             sunInfo.sunrise.toTime(),

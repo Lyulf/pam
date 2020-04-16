@@ -1,3 +1,7 @@
 package com.android.pam.astrology.presentation.view
 
-interface ISunView
+import com.android.pam.astrology.domain.model.sun.Sun
+
+interface ISunView {
+    var sun: Sun
+}
