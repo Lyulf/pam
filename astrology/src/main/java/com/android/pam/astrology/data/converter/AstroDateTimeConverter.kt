@@ -4,9 +4,9 @@ import androidx.room.TypeConverter
 import com.astrocalculator.AstroDateTime
 import java.util.*
 
-class AstroDateTimeConverter {
+class AstroDateTimeConverter : IAstroDateTimeConverter {
     @TypeConverter
-    fun astroDateTimeToCalendar(adt: AstroDateTime): Calendar {
+    override fun astroDateTimeToCalendar(adt: AstroDateTime): Calendar {
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.ZONE_OFFSET, adt.timezoneOffset * 60 * 60 * 1000)
         calendar.set(Calendar.YEAR, adt.year)
@@ -20,7 +20,7 @@ class AstroDateTimeConverter {
     }
 
     @TypeConverter
-    fun calendarToAstroDateTime(calendar: Calendar): AstroDateTime {
+    override fun calendarToAstroDateTime(calendar: Calendar): AstroDateTime {
         val adt = AstroDateTime()
 
         adt.isDaylightSaving = calendar.timeZone.inDaylightTime(calendar.time)
