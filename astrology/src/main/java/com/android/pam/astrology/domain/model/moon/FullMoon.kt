@@ -1,7 +1,7 @@
 package com.android.pam.astrology.domain.model.moon
 
-import java.util.*
+import org.threeten.bp.ZonedDateTime
 
 data class FullMoon(
-    val date: Date
+    val date: ZonedDateTime
 )

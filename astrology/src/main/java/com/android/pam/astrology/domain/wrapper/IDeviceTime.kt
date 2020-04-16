@@ -1,7 +1,7 @@
 package com.android.pam.astrology.domain.wrapper
 
-import java.sql.Time
+import org.threeten.bp.LocalTime
 
 interface IDeviceTime {
-    fun currentTime(): Time
+    fun currentTime(): LocalTime
 }

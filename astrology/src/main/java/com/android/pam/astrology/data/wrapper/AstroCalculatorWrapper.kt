@@ -8,8 +8,8 @@ import com.android.pam.astrology.domain.repository.IAstrologySettingsRepository
 import com.android.pam.astrology.domain.wrapper.IAstrology
 import com.astrocalculator.AstroCalculator
 import com.astrocalculator.AstroDateTime
-import java.sql.Time
-import java.util.*
+import org.threeten.bp.OffsetTime
+import org.threeten.bp.ZonedDateTime
 import javax.inject.Inject
 
 class AstroCalculatorWrapper @Inject constructor(
@@ -29,8 +29,7 @@ class AstroCalculatorWrapper @Inject constructor(
         }
 
     override fun refresh() {
-        val cal = Calendar.getInstance()
-        astroDateTime = cal.toAstro()
+        astroDateTime = ZonedDateTime.now().toAstro()
     }
 
     override fun updateSettings() {
@@ -40,16 +39,16 @@ class AstroCalculatorWrapper @Inject constructor(
     override fun moon(): Moon {
         val moonInfo = astroCalculator.moonInfo
         val moonrise = Moonrise(
-            moonInfo.moonrise.toTime()
+            moonInfo.moonrise.toOffsetTime()
         )
         val moonset = Moonset(
-            moonInfo.moonset.toTime()
+            moonInfo.moonset.toOffsetTime()
         )
         val nextNewMoon = NewMoon(
-            moonInfo.nextNewMoon.toDate()
+            moonInfo.nextNewMoon.toZonedDateTime()
         )
         val nextFullMoon = FullMoon(
-            moonInfo.nextFullMoon.toDate()
+            moonInfo.nextFullMoon.toZonedDateTime()
         )
         val moonPhase = MoonPhase(
             moonInfo.illumination
@@ -64,20 +63,20 @@ class AstroCalculatorWrapper @Inject constructor(
     override fun sun(): Sun {
         val sunInfo = astroCalculator.sunInfo
         val sunrise = Sunrise(
-            sunInfo.sunrise.toTime(),
+            sunInfo.sunrise.toOffsetTime(),
             sunInfo.azimuthRise
         )
         val sunset = Sunset(
-            sunInfo.sunset.toTime(),
+            sunInfo.sunset.toOffsetTime(),
             sunInfo.azimuthSet
         )
 
         val civilDusk = Dusk(
-            sunInfo.twilightEvening.toTime()
+            sunInfo.twilightEvening.toOffsetTime()
         )
 
         val civilDawn = Dawn(
-            sunInfo.twilightMorning.toTime()
+            sunInfo.twilightMorning.toOffsetTime()
         )
 
         return Sun(sunrise, sunset, civilDusk, civilDawn)
@@ -87,25 +86,15 @@ class AstroCalculatorWrapper @Inject constructor(
         return AstroCalculator.Location(latitude, longitude)
     }
 
-    private fun Calendar.toTime(): Time {
-        return Time(timeInMillis)
+    private fun AstroDateTime.toZonedDateTime(): ZonedDateTime {
+        return converter.astroDateTimeToZonedDateTime(this)
     }
 
-    private fun AstroDateTime.toCalendar(): Calendar {
-        return converter.astroDateTimeToCalendar(this)
+    private fun AstroDateTime.toOffsetTime(): OffsetTime {
+        return toZonedDateTime().toOffsetDateTime().toOffsetTime()
     }
 
-    private fun AstroDateTime.toTime(): Time {
-        return toCalendar().toTime()
+    private fun ZonedDateTime.toAstro(): AstroDateTime {
+        return converter.zonedDateTimeToAstroDateTime(this)
     }
-
-    private fun Calendar.toAstro(): AstroDateTime {
-        return converter.calendarToAstroDateTime(this)
-    }
-
-    private fun AstroDateTime.toDate(): Date {
-        return toCalendar().time
-    }
-
-
 }

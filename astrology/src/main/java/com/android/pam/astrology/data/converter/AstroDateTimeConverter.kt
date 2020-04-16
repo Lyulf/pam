@@ -2,35 +2,35 @@ package com.android.pam.astrology.data.converter
 
 import androidx.room.TypeConverter
 import com.astrocalculator.AstroDateTime
-import java.util.*
+import org.threeten.bp.ZoneOffset
+import org.threeten.bp.ZonedDateTime
 
 class AstroDateTimeConverter : IAstroDateTimeConverter {
     @TypeConverter
-    override fun astroDateTimeToCalendar(adt: AstroDateTime): Calendar {
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.ZONE_OFFSET, adt.timezoneOffset * 60 * 60 * 1000)
-        calendar.set(Calendar.YEAR, adt.year)
-        calendar.set(Calendar.MONTH, adt.month - 1)
-        calendar.set(Calendar.DAY_OF_MONTH, adt.day)
-        calendar.set(Calendar.HOUR_OF_DAY, adt.hour + 1)
-        calendar.set(Calendar.MINUTE, adt.minute + 1)
-        calendar.set(Calendar.SECOND, adt.second + 1)
-
-        return calendar
+    override fun astroDateTimeToZonedDateTime(adt: AstroDateTime): ZonedDateTime {
+        return ZonedDateTime.of(
+            adt.year,
+            adt.month,
+            adt.day,
+            adt.hour,
+            adt.minute,
+            adt.second,
+            0,
+            ZoneOffset.ofHours(adt.timezoneOffset)
+        )
     }
 
     @TypeConverter
-    override fun calendarToAstroDateTime(calendar: Calendar): AstroDateTime {
+    override fun zonedDateTimeToAstroDateTime(zdt: ZonedDateTime): AstroDateTime {
         val adt = AstroDateTime()
-
-        adt.isDaylightSaving = calendar.timeZone.inDaylightTime(calendar.time)
-        adt.timezoneOffset = calendar.get(Calendar.ZONE_OFFSET) / (60 * 60 * 1000)
-        adt.year = calendar.get(Calendar.YEAR)
-        adt.month = calendar.get(Calendar.MONTH) + 1
-        adt.day = calendar.get(Calendar.DAY_OF_MONTH)
-        adt.hour = calendar.get(Calendar.HOUR_OF_DAY) - 1
-        adt.minute = calendar.get(Calendar.MINUTE) - 1
-        adt.second = calendar.get(Calendar.SECOND) - 1
+        adt.isDaylightSaving = zdt.zone.rules.isDaylightSavings(zdt.toInstant())
+        adt.timezoneOffset = zdt.offset.totalSeconds / (60 * 60)
+        adt.year = zdt.year
+        adt.month = zdt.monthValue
+        adt.day = zdt.dayOfMonth
+        adt.hour = zdt.hour
+        adt.minute = zdt.minute
+        adt.second = zdt.second
 
         return adt
     }

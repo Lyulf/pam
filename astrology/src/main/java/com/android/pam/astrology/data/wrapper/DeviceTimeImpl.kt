@@ -1,12 +1,11 @@
 package com.android.pam.astrology.data.wrapper
 
 import com.android.pam.astrology.domain.wrapper.IDeviceTime
-import java.sql.Time
-import java.util.*
+import org.threeten.bp.LocalTime
 
 class DeviceTimeImpl : IDeviceTime {
-    override fun currentTime(): Time {
-        return Time(Calendar.getInstance().timeInMillis)
+    override fun currentTime(): LocalTime {
+        return LocalTime.now()
     }
 
 }

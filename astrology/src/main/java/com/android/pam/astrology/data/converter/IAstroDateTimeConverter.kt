@@ -1,9 +1,9 @@
 package com.android.pam.astrology.data.converter
 
 import com.astrocalculator.AstroDateTime
-import java.util.*
+import org.threeten.bp.ZonedDateTime
 
 interface IAstroDateTimeConverter {
-    fun astroDateTimeToCalendar(adt: AstroDateTime): Calendar
-    fun calendarToAstroDateTime(calendar: Calendar): AstroDateTime
+    fun astroDateTimeToZonedDateTime(adt: AstroDateTime): ZonedDateTime
+    fun zonedDateTimeToAstroDateTime(zdt: ZonedDateTime): AstroDateTime
 }

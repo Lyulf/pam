@@ -5,18 +5,16 @@ import com.astrocalculator.AstroDateTime
 import io.kotest.assertions.assertSoftly
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
-import java.text.SimpleDateFormat
-import java.util.*
+import org.threeten.bp.ZoneOffset
+import org.threeten.bp.ZonedDateTime
 
 class AstroDateTimeConverterUnitTest : StringSpec({
     "calendarToAstroDateTime is correct" {
-        val format = SimpleDateFormat("dd/MM/yyyy/HH/mm/ss")
-        val date = format.parse("16/04/2020/12/05/10")
-        val cal = Calendar.getInstance()
-        cal.time = date
+        val date = ZonedDateTime.of(
+            2020, 4, 16, 11, 4, 9, 0, ZoneOffset.ofHours(1)
+        )
         val converter = AstroDateTimeConverter()
-        val adt = converter.calendarToAstroDateTime(cal)
-        cal.time = date
+        val adt = converter.zonedDateTimeToAstroDateTime(date)
         assertSoftly {
             adt.day shouldBe 16
             adt.month shouldBe 4
@@ -29,25 +27,26 @@ class AstroDateTimeConverterUnitTest : StringSpec({
     "astroDateTimeToCalendar is correct" {
         val adt = AstroDateTime(2020, 4, 16, 11, 4, 9, 1, true)
         val converter = AstroDateTimeConverter()
-        val cal = converter.astroDateTimeToCalendar(adt)
+        val date = converter.astroDateTimeToZonedDateTime(adt)
 
         assertSoftly {
-            cal.get(Calendar.DAY_OF_MONTH) shouldBe 16
-            cal.get(Calendar.MONTH) shouldBe 3
-            cal.get(Calendar.YEAR) shouldBe 2020
-            cal.get(Calendar.HOUR_OF_DAY) shouldBe 12
-            cal.get(Calendar.MINUTE) shouldBe 5
-            cal.get(Calendar.SECOND) shouldBe 10
+            date.dayOfMonth shouldBe 16
+            date.monthValue shouldBe 4
+            date.year shouldBe 2020
+            date.hour shouldBe 11
+            date.minute shouldBe 4
+            date.second shouldBe 9
         }
     }
     "converting Calendar to AstroDateTime and reverting it should give the Calendar" {
-        val calendar = Calendar.getInstance()
+        val date = ZonedDateTime.now().withNano(0).withFixedOffsetZone()
         val converter = AstroDateTimeConverter()
-        val adt = converter.calendarToAstroDateTime(calendar)
-        val convertedCalendar = converter.astroDateTimeToCalendar(adt)
+        val adt = converter.zonedDateTimeToAstroDateTime(date)
+        val convertedDate = converter.astroDateTimeToZonedDateTime(adt)
+
         assertSoftly {
-            convertedCalendar.time shouldBe calendar.time
-            convertedCalendar.timeZone shouldBe calendar.timeZone
+            convertedDate shouldBe date
+            convertedDate shouldBe date
         }
     }
 })

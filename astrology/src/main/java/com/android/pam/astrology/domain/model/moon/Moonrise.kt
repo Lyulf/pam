@@ -1,7 +1,7 @@
 package com.android.pam.astrology.domain.model.moon
 
-import java.sql.Time
+import org.threeten.bp.OffsetTime
 
 data class Moonrise(
-    val time: Time
+    val time: OffsetTime
 )
