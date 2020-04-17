@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Astro</string>
+    <string name="action_settings_name">Settings</string>
+
+<!--    Sun-->
+    <string name="sunrise">Sunrise: %s</string>
+    <string name="sunset">Sunset: %s</string>
+    <string name="sunriseAzimuth">Sunrise Azimuth: %s</string>
+    <string name="sunsetAzimuth">Sunset Azimuth: %s</string>
+    <string name="civilDawn">Civil Dawn: %s</string>
+    <string name="civilDusk">Civil Dusk: %s</string>
+
+<!--    Moon-->
+    <string name="moonrise">Moonrise: %s</string>
+    <string name="moonset">Moonset: %s</string>
+    <string name="fullMoon">Next Full Moon: %s</string>
+    <string name="newMoon">Next New Moon: %s</string>
+    <string name="moonPhase">Moon Phase: %s%%</string>
+    <string name="dayOfSynodicMonth">Day of synodic month: %s</string>
+
 </resources>

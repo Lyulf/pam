@@ -1,10 +1,10 @@
 package com.android.pam.astrology.domain.model.moon
 
 data class Moon(
-    val moonrise: Moonrise,
-    val moonset: Moonset,
-    val nextNewMoon: NewMoon,
-    val nextFullMoon: FullMoon,
-    val moonPhase: MoonPhase,
-    val dayOfSynodicMonth: Int
+    val moonrise: Moonrise = Moonrise(),
+    val moonset: Moonset = Moonset(),
+    val nextNewMoon: NewMoon = NewMoon(),
+    val nextFullMoon: FullMoon = FullMoon(),
+    val moonPhase: MoonPhase = MoonPhase(),
+    val dayOfSynodicMonth: Int = 0
 )

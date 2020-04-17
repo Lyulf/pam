@@ -51,7 +51,7 @@ class AstroCalculatorWrapper @Inject constructor(
             moonInfo.nextFullMoon.toZonedDateTime()
         )
         val moonPhase = MoonPhase(
-            moonInfo.illumination
+            moonInfo.illumination * 100
         )
         val dayOfSynodicMonth = moonInfo.age.toInt()
 

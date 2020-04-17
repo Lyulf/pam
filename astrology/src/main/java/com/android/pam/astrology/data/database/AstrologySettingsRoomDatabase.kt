@@ -12,7 +12,7 @@ import com.android.pam.astrology.data.entity.AstrologySettingsEntity
 @Database(
     entities = [AstrologySettingsEntity::class],
     version = 1,
-    exportSchema = true
+    exportSchema = false
 )
 @TypeConverters(value = [LocationConverter::class])
 abstract class AstrologySettingsRoomDatabase : RoomDatabase() {

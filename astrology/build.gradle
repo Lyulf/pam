@@ -62,12 +62,14 @@ dependencies {
     // Test helpers
     testImplementation "androidx.room:room-testing:$roomVersion"
 
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     kapt "com.google.dagger:dagger-compiler:$dagger2Version"
     kapt "com.google.dagger:dagger-android-processor:$dagger2Version"
     implementation "com.google.dagger:dagger-android-support:$dagger2Version"
 
     implementation "com.google.code.gson:gson:2.8.6"
     implementation "org.threeten:threetenbp:1.4.3"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 
     testImplementation "io.kotest:kotest-runner-junit5-jvm:$kotestVersion" // for kotest framework
     testImplementation "io.kotest:kotest-assertions-core-jvm:$kotestVersion" // for kotest core jvm assertions
