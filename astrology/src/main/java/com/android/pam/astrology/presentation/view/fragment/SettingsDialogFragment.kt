@@ -96,7 +96,7 @@ class SettingsDialogFragment : DialogFragment(), ISettingsContract.IView {
         viewModel.settingsModel().removeObserver { settingsObserver }
     }
 
-    fun updateSettings(model: SettingsModel) {
+    private fun updateSettings(model: SettingsModel) {
         settings_edt_latitude.setText(model.settings.location.latitude.toString())
         settings_edt_longitude.setText(model.settings.location.longitude.toString())
         val id = spinnerValues.indexOf(model.settings.astroDataRefreshFrequency.toInt().toString())
