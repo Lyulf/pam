@@ -8,7 +8,7 @@ import com.android.pam.astrology.di.module.RoomModule
 import com.android.pam.astrology.domain.repository.IAstrologySettingsRepository
 import com.android.pam.astrology.presentation.view.activity.AstrologyActivity
 import com.android.pam.astrology.presentation.view.fragment.MoonFragment
-import com.android.pam.astrology.presentation.view.fragment.SettingsFragment
+import com.android.pam.astrology.presentation.view.fragment.SettingsDialogFragment
 import com.android.pam.astrology.presentation.view.fragment.SunFragment
 import dagger.Component
 
@@ -27,5 +27,5 @@ interface AstrologyComponent {
     fun inject(astrologyActivity: AstrologyActivity)
     fun inject(sunFragment: SunFragment)
     fun inject(moonFragment: MoonFragment)
-    fun inject(settingsFragment: SettingsFragment)
+    fun inject(settingsDialogFragment: SettingsDialogFragment)
 }

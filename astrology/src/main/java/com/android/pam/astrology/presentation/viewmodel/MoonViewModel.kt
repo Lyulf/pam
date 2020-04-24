@@ -2,6 +2,7 @@ package com.android.pam.astrology.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.android.pam.astrology.domain.utils.LiveDataUtils.newValue
 import com.android.pam.astrology.presentation.contract.IMoonContract
 import com.android.pam.astrology.presentation.model.MoonModel
 
@@ -11,7 +12,7 @@ class MoonViewModel : ViewModel(), IMoonContract.IViewModel {
     }
 
     override fun setMoonModel(moonModel: MoonModel) {
-        model.value = moonModel
+        model.newValue = moonModel
     }
     override fun moonModel(): MutableLiveData<MoonModel> = model
 }

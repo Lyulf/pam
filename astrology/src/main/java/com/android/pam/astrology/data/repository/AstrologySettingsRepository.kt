@@ -54,7 +54,7 @@ class AstrologySettingsRepository @Inject constructor(
     override fun getRefreshRate(): Double {
         return runBlocking(coroutineContext) {
             dao.getRefreshFrequency().blockingGet(
-                0.0
+                Settings().astroDataRefreshFrequency
             )
         }
     }

@@ -19,8 +19,7 @@ class SunFragment : Fragment(), ISunContract.IView {
     @Inject lateinit var presenter: ISunContract.IPresenter
     @Inject lateinit var viewModel: ISunContract.IViewModel
 
-    private val sunObserver = Observer<SunModel> {
-            sunModel ->
+    private val sunObserver = Observer<SunModel> { sunModel ->
         sunFragment_txv_sunrise.text = getString(R.string.sunrise).format(sunModel.sun.sunrise.time.toString())
         sunFragment_txv_sunset.text = getString(R.string.sunset).format(sunModel.sun.sunset.time.toString())
         sunFragment_txv_sunriseAzimuth.text = getString(R.string.sunriseAzimuth).format(sunModel.sun.sunset.azimuth.toString())

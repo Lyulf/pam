@@ -15,6 +15,7 @@ import com.android.pam.astrology.presentation.contract.IAstrologyContract
 import com.android.pam.astrology.presentation.contract.IMoonContract
 import com.android.pam.astrology.presentation.contract.ISettingsContract
 import com.android.pam.astrology.presentation.contract.ISunContract
+import com.android.pam.astrology.presentation.presenter.AstrologyPresenter
 import com.android.pam.astrology.presentation.presenter.MoonPresenter
 import com.android.pam.astrology.presentation.presenter.SettingsPresenter
 import com.android.pam.astrology.presentation.presenter.SunPresenter
@@ -69,8 +70,23 @@ class AstrologyModule {
 
     @Provides
     fun provideISettingsPresenter(
-        saveAstrologySettingsUseCase: SaveAstrologySettingsUseCase
-    ) : ISettingsContract.IPresenter = SettingsPresenter(saveAstrologySettingsUseCase)
+        getAstrologicalSettingsUseCase: GetAstrologicalSettingsUseCase,
+        saveAstrologySettingsUseCase: SaveAstrologySettingsUseCase,
+        viewModel: ISettingsContract.IViewModel,
+        astrologyPresenter: IAstrologyContract.IPresenter
+    ) : ISettingsContract.IPresenter = SettingsPresenter(
+        getAstrologicalSettingsUseCase, saveAstrologySettingsUseCase, viewModel, astrologyPresenter)
+
+    @Provides
+    fun provideIAstrologyPresenter(
+        getTimeUseCase: GetTimeUseCase,
+        getDateTimeUseCase: GetDateTimeUseCase,
+        getDataRefreshRateUseCase: GetDataRefreshRateUseCase,
+        viewModel: IAstrologyContract.IViewModel,
+        sunPresenter: ISunContract.IPresenter,
+        moonPresenter: IMoonContract.IPresenter
+    ) : IAstrologyContract.IPresenter = AstrologyPresenter(
+        getTimeUseCase, getDateTimeUseCase, getDataRefreshRateUseCase, viewModel, sunPresenter, moonPresenter)
 
     @Provides
     fun provideAstroDateTimeConverter(): IAstroDateTimeConverter = AstroDateTimeConverter()
@@ -85,6 +101,16 @@ class AstrologyModule {
     fun provideIDeviceTime(): IDeviceTime = DeviceTimeImpl()
 
     @Provides
+    fun provideGetAstrologicalSettingsUseCase(
+        repository: IAstrologySettingsRepository
+    ): GetAstrologicalSettingsUseCase = GetAstrologicalSettingsUseCase(repository)
+
+    @Provides
+    fun provideGetDataRefreshRateUseCase(
+        repository: IAstrologySettingsRepository
+    ): GetDataRefreshRateUseCase = GetDataRefreshRateUseCase(repository)
+
+    @Provides
     fun provideGetMoonDataUseCase(wrapper: IAstrology): GetMoonDataUseCase
             = GetMoonDataUseCase(wrapper)
 
@@ -95,6 +121,10 @@ class AstrologyModule {
     @Provides
     fun provideGetTimeUseCase(wrapper: IDeviceTime): GetTimeUseCase
             = GetTimeUseCase(wrapper)
+
+    @Provides
+    fun provideGetDateTimeUseCase(wrapper: IDeviceTime): GetDateTimeUseCase
+            = GetDateTimeUseCase(wrapper)
 
     @Provides
     fun provideRefreshAstrologicalDataUseCase(data: IAstrology): RefreshAstrologicalDataUseCase

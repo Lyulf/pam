@@ -1,7 +1,8 @@
 package com.android.pam.astrology.presentation.view.activity
 
 import android.os.Bundle
-import androidx.appcompat.app.ActionBar
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -15,6 +16,7 @@ import com.android.pam.astrology.presentation.contract.IAstrologyContract
 import com.android.pam.astrology.presentation.contract.IMoonContract
 import com.android.pam.astrology.presentation.contract.ISunContract
 import com.android.pam.astrology.presentation.view.fragment.MoonFragment
+import com.android.pam.astrology.presentation.view.fragment.SettingsDialogFragment
 import com.android.pam.astrology.presentation.view.fragment.SunFragment
 import kotlinx.android.synthetic.main.activity_astro.*
 import org.threeten.bp.LocalTime
@@ -24,10 +26,10 @@ class AstrologyActivity : AppCompatActivity(), IAstrologyContract.IView {
     @Inject lateinit var viewModel: IAstrologyContract.IViewModel
     @Inject lateinit var sunViewModel: ISunContract.IViewModel
     @Inject lateinit var moonViewModel: IMoonContract.IViewModel
+    @Inject lateinit var presenter: IAstrologyContract.IPresenter
     private lateinit var viewPagerAdapter: AstroPagerAdapter
-    private var actionBar: ActionBar? = null
     private val timeObserver = Observer<LocalTime> {
-        time -> actionBar?.subtitle = time.toString()
+        time -> supportActionBar?.title = time.toString()
     }
 
 
@@ -37,10 +39,19 @@ class AstrologyActivity : AppCompatActivity(), IAstrologyContract.IView {
         setContentView(R.layout.activity_astro)
 
         setupViewPager()
-//        setSupportActionBar(toolbar)
-//        val actionBar = supportActionBar
-//        actionBar!!.title = getString(R.string.app_name)
-//        subscribeTime()
+        setupSuportActionBar()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.startRefreshingTime(1000)
+        presenter.startUpdatingData()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        presenter.stopRefreshingTime()
+        presenter.stopUpdatingData()
     }
 
     private fun setupViewPager() {
@@ -56,6 +67,28 @@ class AstrologyActivity : AppCompatActivity(), IAstrologyContract.IView {
             })
             currentItem = selectedTabPosition
         }
+    }
+
+    fun setupSuportActionBar() {
+        subscribeTime()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.toolbar_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.toolbar_act_refresh -> presenter.onUpdateData()
+            R.id.toolbar_act_settings -> {
+                val fm = supportFragmentManager
+                val settingsDialogFragment = SettingsDialogFragment()
+                settingsDialogFragment.show(fm, "Fragment_tag")
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun subscribeTime() {

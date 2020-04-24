@@ -1,8 +1,17 @@
 <resources>
     <string name="app_name">Astro</string>
+
+    <string name="action_refresh_name">Refresh</string>
     <string name="action_settings_name">Settings</string>
 
+<!--    Settings-->
+    <string name="settings_latitude">Latitude</string>
+    <string name="settings_longitude">Longitude</string>
+    <string name="settings_refreshRate">Refresh Rate</string>
+    <string name="settings_confirm_button">Save</string>
+
 <!--    Sun-->
+    <string name="sun">Sun</string>
     <string name="sunrise">Sunrise: %s</string>
     <string name="sunset">Sunset: %s</string>
     <string name="sunriseAzimuth">Sunrise Azimuth: %s</string>
@@ -11,6 +20,7 @@
     <string name="civilDusk">Civil Dusk: %s</string>
 
 <!--    Moon-->
+    <string name="moon">Moon</string>
     <string name="moonrise">Moonrise: %s</string>
     <string name="moonset">Moonset: %s</string>
     <string name="fullMoon">Next Full Moon: %s</string>
