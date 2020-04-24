@@ -20,6 +20,7 @@ import com.android.pam.astrology.presentation.view.fragment.SettingsDialogFragme
 import com.android.pam.astrology.presentation.view.fragment.SunFragment
 import kotlinx.android.synthetic.main.activity_astro.*
 import org.threeten.bp.LocalTime
+import org.threeten.bp.format.DateTimeFormatter
 import javax.inject.Inject
 
 class AstrologyActivity : AppCompatActivity(), IAstrologyContract.IView {
@@ -29,7 +30,9 @@ class AstrologyActivity : AppCompatActivity(), IAstrologyContract.IView {
     @Inject lateinit var presenter: IAstrologyContract.IPresenter
     private lateinit var viewPagerAdapter: AstroPagerAdapter
     private val timeObserver = Observer<LocalTime> {
-        time -> supportActionBar?.title = time.toString()
+        time -> supportActionBar?.title = getString(R.string.action_time).format(
+            time.withNano(0).format(DateTimeFormatter.ISO_LOCAL_TIME)
+        )
     }
 
 
@@ -38,7 +41,9 @@ class AstrologyActivity : AppCompatActivity(), IAstrologyContract.IView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_astro)
 
-        setupViewPager()
+        if(viewPager != null) {
+            setupViewPager()
+        }
         setupSuportActionBar()
     }
 
@@ -49,14 +54,14 @@ class AstrologyActivity : AppCompatActivity(), IAstrologyContract.IView {
     }
 
     override fun onPause() {
-        super.onPause()
         presenter.stopRefreshingTime()
         presenter.stopUpdatingData()
+        super.onPause()
     }
 
     private fun setupViewPager() {
         viewPagerAdapter = AstroPagerAdapter(this)
-        viewPager.apply {
+        viewPager!!.apply {
             adapter = viewPagerAdapter
             offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -69,7 +74,7 @@ class AstrologyActivity : AppCompatActivity(), IAstrologyContract.IView {
         }
     }
 
-    fun setupSuportActionBar() {
+    private fun setupSuportActionBar() {
         subscribeTime()
     }
 

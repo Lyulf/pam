@@ -12,7 +12,8 @@ import com.android.pam.astrology.di.component.DaggerAstrologyComponent
 import com.android.pam.astrology.di.module.ActivitiesModule
 import com.android.pam.astrology.presentation.contract.ISunContract
 import com.android.pam.astrology.presentation.model.SunModel
-import kotlinx.android.synthetic.main.fragment_sun.*
+import kotlinx.android.synthetic.main.data_sun.*
+import org.threeten.bp.format.DateTimeFormatter
 import javax.inject.Inject
 
 class SunFragment : Fragment(), ISunContract.IView {
@@ -20,12 +21,24 @@ class SunFragment : Fragment(), ISunContract.IView {
     @Inject lateinit var viewModel: ISunContract.IViewModel
 
     private val sunObserver = Observer<SunModel> { sunModel ->
-        sunFragment_txv_sunrise.text = getString(R.string.sunrise).format(sunModel.sun.sunrise.time.toString())
-        sunFragment_txv_sunset.text = getString(R.string.sunset).format(sunModel.sun.sunset.time.toString())
-        sunFragment_txv_sunriseAzimuth.text = getString(R.string.sunriseAzimuth).format(sunModel.sun.sunset.azimuth.toString())
-        sunFragment_txv_sunsetAzimuth.text = getString(R.string.sunsetAzimuth).format(sunModel.sun.sunset.azimuth.toString())
-        sunFragment_txv_civilDusk.text = getString(R.string.civilDusk).format(sunModel.sun.civilDusk.time.toString())
-        sunFragment_txv_civilDawn.text = getString(R.string.civilDawn).format(sunModel.sun.civilDawn.time.toString())
+        sunFragment_txv_sunrise.text = getString(R.string.sunrise).format(
+            sunModel.sun.sunrise.time.format(DateTimeFormatter.ISO_LOCAL_TIME)
+        )
+        sunFragment_txv_sunset.text = getString(R.string.sunset).format(
+            sunModel.sun.sunset.time.format(DateTimeFormatter.ISO_LOCAL_TIME)
+        )
+        sunFragment_txv_sunriseAzimuth.text = getString(R.string.sunriseAzimuth).format(
+            "%.2f".format(sunModel.sun.sunrise.azimuth)
+        )
+        sunFragment_txv_sunsetAzimuth.text = getString(R.string.sunsetAzimuth).format(
+            "%.2f".format(sunModel.sun.sunset.azimuth)
+        )
+        sunFragment_txv_civilDusk.text = getString(R.string.civilDusk).format(
+            sunModel.sun.civilDusk.time.format(DateTimeFormatter.ISO_LOCAL_TIME)
+        )
+        sunFragment_txv_civilDawn.text = getString(R.string.civilDawn).format(
+            sunModel.sun.civilDawn.time.format(DateTimeFormatter.ISO_LOCAL_TIME)
+        )
     }
 
     override fun onCreateView(

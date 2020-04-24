@@ -3,6 +3,7 @@
 
     <string name="action_refresh_name">Refresh</string>
     <string name="action_settings_name">Settings</string>
+    <string name="action_time">Time: %s</string>
 
 <!--    Settings-->
     <string name="settings_latitude">Latitude</string>
@@ -23,8 +24,8 @@
     <string name="moon">Moon</string>
     <string name="moonrise">Moonrise: %s</string>
     <string name="moonset">Moonset: %s</string>
-    <string name="fullMoon">Next Full Moon: %s</string>
-    <string name="newMoon">Next New Moon: %s</string>
+    <string name="fullMoon">Full Moon: %s</string>
+    <string name="newMoon">New Moon: %s</string>
     <string name="moonPhase">Moon Phase: %s%%</string>
     <string name="dayOfSynodicMonth">Day of synodic month: %s</string>
 
