@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import com.android.pam.astrology.R
@@ -51,15 +52,19 @@ class SettingsDialogFragment : DialogFragment(), ISettingsContract.IView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         settings_btn_confirm.setOnClickListener {
-            val latitude = settings_edt_latitude.text.toString().toDouble()
-            val longitude = settings_edt_longitude.text.toString().toDouble()
-            val location = Location(latitude, longitude)
-            val id = settings_spn_refreshRate.selectedItemPosition
-            val refreshRate = spinnerValues[id].toDouble()
-            val settings = Settings(location, refreshRate)
-            viewModel.setSettingsModel(SettingsModel(settings))
-            presenter.onSaveSettings()
-            dismiss()
+            try {
+                val latitude = settings_edt_latitude.text.toString().toDouble()
+                val longitude = settings_edt_longitude.text.toString().toDouble()
+                val location = Location(latitude, longitude)
+                val id = settings_spn_refreshRate.selectedItemPosition
+                val refreshRate = spinnerValues[id].toDouble()
+                val settings = Settings(location, refreshRate)
+                viewModel.setSettingsModel(SettingsModel(settings))
+                presenter.onSaveSettings()
+                dismiss()
+            } catch (e: NumberFormatException) {
+                Toast.makeText(context, "All fields need to be filled out.", Toast.LENGTH_SHORT).show()
+            }
         }
 
         settings_spn_refreshRate.adapter = adapter
