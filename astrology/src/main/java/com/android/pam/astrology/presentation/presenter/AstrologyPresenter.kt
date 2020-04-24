@@ -9,6 +9,7 @@ import com.android.pam.astrology.presentation.contract.ISunContract
 import org.threeten.bp.temporal.ChronoUnit
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
+import java.util.concurrent.ScheduledFuture
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -20,8 +21,9 @@ class AstrologyPresenter @Inject constructor(
     private val sunPresenter: ISunContract.IPresenter,
     private val moonPresenter: IMoonContract.IPresenter
 ) : IAstrologyContract.IPresenter {
-    private val timeScheduler: ScheduledExecutorService = Executors.newScheduledThreadPool(1)
-    private val updateScheduler: ScheduledExecutorService = Executors.newScheduledThreadPool(1)
+    private val scheduler: ScheduledExecutorService = Executors.newScheduledThreadPool(2)
+    private var refreshTimeFuture: ScheduledFuture<*>? = null
+    private var updateDataFuture: ScheduledFuture<*>? = null
 
     override fun onRefreshTime() {
         val time = getTimeUseCase.invoke()
@@ -34,7 +36,7 @@ class AstrologyPresenter @Inject constructor(
     }
 
     override fun startRefreshingTime(frequencyInMs: Long) {
-        timeScheduler.scheduleAtFixedRate({
+        refreshTimeFuture = scheduler.scheduleAtFixedRate({
             onRefreshTime()
         },
         0L,
@@ -43,7 +45,7 @@ class AstrologyPresenter @Inject constructor(
     }
 
     override fun stopRefreshingTime() {
-        timeScheduler.shutdown()
+        refreshTimeFuture?.cancel(true)
     }
 
     override fun startUpdatingData() {
@@ -52,7 +54,7 @@ class AstrologyPresenter @Inject constructor(
             viewModel.setNextUpdate(currentDateTime)
         }
         val initialDelay = currentDateTime.until(viewModel.nextUpdate(), ChronoUnit.MINUTES)
-        updateScheduler.scheduleAtFixedRate({
+        updateDataFuture = scheduler.scheduleAtFixedRate({
             onUpdateData()
             currentDateTime = getDateTimeUseCase.invoke()
             val refreshRate = getDataRefreshRateUseCase.invoke()
@@ -66,6 +68,6 @@ class AstrologyPresenter @Inject constructor(
     }
 
     override fun stopUpdatingData() {
-        updateScheduler.shutdown()
+        updateDataFuture?.cancel(true)
     }
 }
