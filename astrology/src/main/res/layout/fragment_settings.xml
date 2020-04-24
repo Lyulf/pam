@@ -35,20 +35,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/settings_latitude"
+                android:hint="@string/settings_latitude_hint"
                 android:importantForAutofill="no"
                 android:ems="10"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal|numberSigned" />
 
         <EditText
                 android:id="@+id/settings_edt_longitude"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/settings_longitude"
+                android:hint="@string/settings_longitude_hint"
                 android:importantForAutofill="no"
                 android:ems="10"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal|numberSigned" />
     </LinearLayout>
 
     <LinearLayout

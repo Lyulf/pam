@@ -25,28 +25,35 @@ import com.android.pam.astrology.presentation.viewmodel.SettingsViewModel
 import com.android.pam.astrology.presentation.viewmodel.SunViewModel
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
+import javax.inject.Singleton
 
 @Module
 class AstrologyModule {
     @Provides
     fun provideContext(activity: FragmentActivity): Context = activity.applicationContext
 
+    @Singleton
     @Provides
     fun provideIAstrologyViewModel(activity: FragmentActivity)
             : IAstrologyContract.IViewModel = ViewModelProvider(activity).get(AstrologyViewModel::class.java)
 
+    @Singleton
     @Provides
     fun provideISunViewModel(activity: FragmentActivity)
         : ISunContract.IViewModel = ViewModelProvider(activity).get(SunViewModel::class.java)
 
+    @Singleton
     @Provides
     fun provideIMoonViewModel(activity: FragmentActivity)
             : IMoonContract.IViewModel = ViewModelProvider(activity).get(MoonViewModel::class.java)
 
+    @Singleton
     @Provides
     fun provideISettingsViewModel(activity: FragmentActivity)
             : ISettingsContract.IViewModel = ViewModelProvider(activity).get(SettingsViewModel::class.java)
 
+    @Singleton
     @Provides
     fun provideISunPresenter(
         refreshAstrologicalDataUseCase: RefreshAstrologicalDataUseCase,
@@ -57,6 +64,7 @@ class AstrologyModule {
         getSunDataUseCase,
         sunViewModel
     )
+    @Singleton
     @Provides
     fun provideIMoonPresenter(
         refreshAstrologicalDataUseCase: RefreshAstrologicalDataUseCase,
@@ -68,6 +76,7 @@ class AstrologyModule {
         moonViewModel
     )
 
+    @Singleton
     @Provides
     fun provideISettingsPresenter(
         getAstrologicalSettingsUseCase: GetAstrologicalSettingsUseCase,
@@ -77,6 +86,7 @@ class AstrologyModule {
     ) : ISettingsContract.IPresenter = SettingsPresenter(
         getAstrologicalSettingsUseCase, saveAstrologySettingsUseCase, viewModel, astrologyPresenter)
 
+    @Singleton
     @Provides
     fun provideIAstrologyPresenter(
         getTimeUseCase: GetTimeUseCase,
@@ -88,48 +98,59 @@ class AstrologyModule {
     ) : IAstrologyContract.IPresenter = AstrologyPresenter(
         getTimeUseCase, getDateTimeUseCase, getDataRefreshRateUseCase, viewModel, sunPresenter, moonPresenter)
 
+    @Reusable
     @Provides
     fun provideAstroDateTimeConverter(): IAstroDateTimeConverter = AstroDateTimeConverter()
 
+    @Singleton
     @Provides
     fun provideIAstrology(
         repository: IAstrologySettingsRepository,
         converter: IAstroDateTimeConverter
     ): IAstrology = AstroCalculatorWrapper(repository, converter)
 
+    @Singleton
     @Provides
     fun provideIDeviceTime(): IDeviceTime = DeviceTimeImpl()
 
+    @Reusable
     @Provides
     fun provideGetAstrologicalSettingsUseCase(
         repository: IAstrologySettingsRepository
     ): GetAstrologicalSettingsUseCase = GetAstrologicalSettingsUseCase(repository)
 
+    @Reusable
     @Provides
     fun provideGetDataRefreshRateUseCase(
         repository: IAstrologySettingsRepository
     ): GetDataRefreshRateUseCase = GetDataRefreshRateUseCase(repository)
 
+    @Reusable
     @Provides
     fun provideGetMoonDataUseCase(wrapper: IAstrology): GetMoonDataUseCase
             = GetMoonDataUseCase(wrapper)
 
+    @Reusable
     @Provides
     fun provideGetSunDataUseCase(wrapper: IAstrology): GetSunDataUseCase
             = GetSunDataUseCase(wrapper)
 
+    @Reusable
     @Provides
     fun provideGetTimeUseCase(wrapper: IDeviceTime): GetTimeUseCase
             = GetTimeUseCase(wrapper)
 
+    @Reusable
     @Provides
     fun provideGetDateTimeUseCase(wrapper: IDeviceTime): GetDateTimeUseCase
             = GetDateTimeUseCase(wrapper)
 
+    @Reusable
     @Provides
     fun provideRefreshAstrologicalDataUseCase(data: IAstrology): RefreshAstrologicalDataUseCase
             = RefreshAstrologicalDataUseCase(data)
 
+    @Reusable
     @Provides
     fun provideSaveAstrologySettingsUseCase(
         repository: IAstrologySettingsRepository,

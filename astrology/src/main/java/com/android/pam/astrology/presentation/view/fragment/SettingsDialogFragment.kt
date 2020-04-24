@@ -15,6 +15,7 @@ import com.android.pam.astrology.di.module.ActivitiesModule
 import com.android.pam.astrology.domain.model.settings.Location
 import com.android.pam.astrology.domain.model.settings.Settings
 import com.android.pam.astrology.presentation.contract.ISettingsContract
+import com.android.pam.astrology.presentation.filter.InputFilterOpenMinMax
 import com.android.pam.astrology.presentation.model.SettingsModel
 import kotlinx.android.synthetic.main.fragment_settings.*
 import javax.inject.Inject
@@ -68,6 +69,8 @@ class SettingsDialogFragment : DialogFragment(), ISettingsContract.IView {
         }
 
         settings_spn_refreshRate.adapter = adapter
+        settings_edt_latitude.filters = arrayOf(InputFilterOpenMinMax(-90.0, 90.0))
+        settings_edt_longitude.filters = arrayOf(InputFilterOpenMinMax(-180.0, 180.0))
         subscribeSettings()
     }
 

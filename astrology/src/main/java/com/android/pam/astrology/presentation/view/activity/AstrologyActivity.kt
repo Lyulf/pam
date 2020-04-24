@@ -41,6 +41,7 @@ class AstrologyActivity : AppCompatActivity(), IAstrologyContract.IView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_astro)
 
+
         if(viewPager != null) {
             setupViewPager()
         }

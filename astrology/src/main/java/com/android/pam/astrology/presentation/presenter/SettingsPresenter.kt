@@ -5,7 +5,9 @@ import com.android.pam.astrology.domain.usecase.SaveAstrologySettingsUseCase
 import com.android.pam.astrology.presentation.contract.IAstrologyContract
 import com.android.pam.astrology.presentation.contract.ISettingsContract
 import com.android.pam.astrology.presentation.model.SettingsModel
+import java.util.*
 import javax.inject.Inject
+import kotlin.concurrent.schedule
 
 class SettingsPresenter @Inject constructor(
     private val getAstrologySettingsUseCase: GetAstrologicalSettingsUseCase,
@@ -23,7 +25,9 @@ class SettingsPresenter @Inject constructor(
     override fun onSaveSettings() {
         viewModel.settingsModel().value?.let {
             saveAstrologySettingsUseCase.invoke(it.settings)
-            astrologyPresenter.onUpdateData()
+            Timer("UpdateData", false).schedule(500) {
+                astrologyPresenter.onUpdateData()
+            }
         }
     }
 

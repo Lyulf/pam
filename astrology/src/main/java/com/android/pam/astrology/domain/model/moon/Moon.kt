@@ -6,5 +6,5 @@ data class Moon(
     val nextNewMoon: NewMoon = NewMoon(),
     val nextFullMoon: FullMoon = FullMoon(),
     val moonPhase: MoonPhase = MoonPhase(),
-    val dayOfSynodicMonth: Int = 0
+    val dayOfSynodicMonth: Int? = null
 )

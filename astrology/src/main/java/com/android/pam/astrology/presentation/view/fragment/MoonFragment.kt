@@ -22,22 +22,27 @@ class MoonFragment : Fragment(), IMoonContract.IView {
 
     private val moonObserver = Observer<MoonModel> { moonModel ->
         moonFragment_txv_moonrise.text = getString(R.string.moonrise).format(
-            moonModel.moon.moonrise.time.format(DateTimeFormatter.ISO_LOCAL_TIME)
+            moonModel.moon.moonrise.time?.format(DateTimeFormatter.ISO_LOCAL_TIME) ?: "N/A"
         )
         moonFragment_txv_moonset.text = getString(R.string.moonset).format(
-            moonModel.moon.moonset.time.format(DateTimeFormatter.ISO_LOCAL_TIME)
+            moonModel.moon.moonset.time?.format(DateTimeFormatter.ISO_LOCAL_TIME) ?: "N/A"
         )
         moonFragment_txv_fullMoon.text = getString(R.string.fullMoon).format(
-            moonModel.moon.nextFullMoon.date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
+            moonModel.moon.nextFullMoon.date?.format(
+                DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")) ?: "N/A"
         )
         moonFragment_txv_newMoon.text = getString(R.string.newMoon).format(
-            moonModel.moon.nextNewMoon.date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
+            moonModel.moon.nextNewMoon.date?.format(
+                DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")) ?: "N/A"
         )
         moonFragment_txv_moonPhase.text = getString(R.string.moonPhase).format(
-            "%.2f".format(moonModel.moon.moonPhase.percent)
+            if(moonModel.moon.moonPhase.percent != null)
+                "%.2f".format(moonModel.moon.moonPhase.percent)
+            else
+                "N/A"
         )
         moonFragment_txv_daySynodicMonth.text = getString(R.string.dayOfSynodicMonth).format(
-            moonModel.moon.dayOfSynodicMonth.toString()
+            moonModel.moon.dayOfSynodicMonth?.toString() ?: "N/A"
         )
     }
 

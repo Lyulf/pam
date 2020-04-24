@@ -37,18 +37,20 @@ class AstroCalculatorWrapper @Inject constructor(
     }
 
     override fun moon(): Moon {
+        // hotfix
+        updateSettings()
         val moonInfo = astroCalculator.moonInfo
         val moonrise = Moonrise(
-            moonInfo.moonrise.toOffsetTime()
+            moonInfo.moonrise?.toOffsetTime()
         )
         val moonset = Moonset(
-            moonInfo.moonset.toOffsetTime()
+            moonInfo.moonset?.toOffsetTime()
         )
         val nextNewMoon = NewMoon(
-            moonInfo.nextNewMoon.toZonedDateTime()
+            moonInfo.nextNewMoon?.toZonedDateTime()
         )
         val nextFullMoon = FullMoon(
-            moonInfo.nextFullMoon.toZonedDateTime()
+            moonInfo.nextFullMoon?.toZonedDateTime()
         )
         val moonPhase = MoonPhase(
             moonInfo.illumination * 100
@@ -61,22 +63,24 @@ class AstroCalculatorWrapper @Inject constructor(
     }
 
     override fun sun(): Sun {
+        // hotfix
+        updateSettings()
         val sunInfo = astroCalculator.sunInfo
         val sunrise = Sunrise(
-            sunInfo.sunrise.toOffsetTime(),
+            sunInfo.sunrise?.toOffsetTime(),
             sunInfo.azimuthRise
         )
         val sunset = Sunset(
-            sunInfo.sunset.toOffsetTime(),
+            sunInfo.sunset?.toOffsetTime(),
             sunInfo.azimuthSet
         )
 
         val civilDusk = Dusk(
-            sunInfo.twilightEvening.toOffsetTime()
+            sunInfo.twilightEvening?.toOffsetTime()
         )
 
         val civilDawn = Dawn(
-            sunInfo.twilightMorning.toOffsetTime()
+            sunInfo.twilightMorning?.toOffsetTime()
         )
 
         return Sun(sunrise, sunset, civilDusk, civilDawn)

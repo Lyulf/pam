@@ -8,7 +8,9 @@
 <!--    Settings-->
     <string name="settings_latitude">Latitude</string>
     <string name="settings_longitude">Longitude</string>
-    <string name="settings_refreshRate">Refresh Rate</string>
+    <string name="settings_latitude_hint">(-90, 90)</string>
+    <string name="settings_longitude_hint">(-180, 180)</string>
+    <string name="settings_refreshRate">Refresh Rate (min)</string>
     <string name="settings_confirm_button">Save</string>
 
 <!--    Sun-->

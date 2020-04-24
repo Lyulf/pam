@@ -11,7 +11,9 @@ import com.android.pam.astrology.presentation.view.fragment.MoonFragment
 import com.android.pam.astrology.presentation.view.fragment.SettingsDialogFragment
 import com.android.pam.astrology.presentation.view.fragment.SunFragment
 import dagger.Component
+import javax.inject.Singleton
 
+@Singleton
 @Component(
     modules = [
         ActivitiesModule::class,

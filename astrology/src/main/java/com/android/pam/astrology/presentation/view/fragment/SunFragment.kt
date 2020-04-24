@@ -22,22 +22,28 @@ class SunFragment : Fragment(), ISunContract.IView {
 
     private val sunObserver = Observer<SunModel> { sunModel ->
         sunFragment_txv_sunrise.text = getString(R.string.sunrise).format(
-            sunModel.sun.sunrise.time.format(DateTimeFormatter.ISO_LOCAL_TIME)
+            sunModel.sun.sunrise.time?.format(DateTimeFormatter.ISO_LOCAL_TIME) ?: "N/A"
         )
         sunFragment_txv_sunset.text = getString(R.string.sunset).format(
-            sunModel.sun.sunset.time.format(DateTimeFormatter.ISO_LOCAL_TIME)
+            sunModel.sun.sunset.time?.format(DateTimeFormatter.ISO_LOCAL_TIME) ?: "N/A"
         )
         sunFragment_txv_sunriseAzimuth.text = getString(R.string.sunriseAzimuth).format(
-            "%.2f".format(sunModel.sun.sunrise.azimuth)
+            if(sunModel.sun.sunrise.azimuth?.isNaN() != false)
+                "N/A"
+            else
+                "%.2f".format(sunModel.sun.sunrise.azimuth)
         )
         sunFragment_txv_sunsetAzimuth.text = getString(R.string.sunsetAzimuth).format(
-            "%.2f".format(sunModel.sun.sunset.azimuth)
+            if(sunModel.sun.sunset.azimuth?.isNaN() != false)
+                "N/A"
+            else
+                "%.2f".format(sunModel.sun.sunset.azimuth)
         )
         sunFragment_txv_civilDusk.text = getString(R.string.civilDusk).format(
-            sunModel.sun.civilDusk.time.format(DateTimeFormatter.ISO_LOCAL_TIME)
+            sunModel.sun.civilDusk.time?.format(DateTimeFormatter.ISO_LOCAL_TIME) ?: "N/A"
         )
         sunFragment_txv_civilDawn.text = getString(R.string.civilDawn).format(
-            sunModel.sun.civilDawn.time.format(DateTimeFormatter.ISO_LOCAL_TIME)
+            sunModel.sun.civilDawn.time?.format(DateTimeFormatter.ISO_LOCAL_TIME) ?: "N/A"
         )
     }
 
