@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.android.pam.astrology.R
+import com.android.pam.astrology.di.component.AstrologyComponent
 import com.android.pam.astrology.di.component.DaggerAstrologyComponent
 import com.android.pam.astrology.di.module.ActivitiesModule
 import com.android.pam.astrology.presentation.contract.IAstrologyContract
@@ -34,10 +35,11 @@ class AstrologyActivity : AppCompatActivity(), IAstrologyContract.IView {
             time.withNano(0).format(DateTimeFormatter.ISO_LOCAL_TIME)
         )
     }
-
+    private lateinit var component: AstrologyComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        DaggerAstrologyComponent.builder().activitiesModule(ActivitiesModule(this)).build().inject(this)
+        component = DaggerAstrologyComponent.builder().activitiesModule(ActivitiesModule(this)).build()
+        component.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_astro)
 
@@ -46,6 +48,10 @@ class AstrologyActivity : AppCompatActivity(), IAstrologyContract.IView {
             setupViewPager()
         }
         setupSuportActionBar()
+    }
+
+    override fun astrologyComponent(): AstrologyComponent {
+        return component
     }
 
     override fun onResume() {

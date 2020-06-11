@@ -37,8 +37,6 @@ class AstroCalculatorWrapper @Inject constructor(
     }
 
     override fun moon(): Moon {
-        // hotfix
-        updateSettings()
         val moonInfo = astroCalculator.moonInfo
         val moonrise = Moonrise(
             moonInfo.moonrise?.toOffsetTime()
@@ -63,8 +61,6 @@ class AstroCalculatorWrapper @Inject constructor(
     }
 
     override fun sun(): Sun {
-        // hotfix
-        updateSettings()
         val sunInfo = astroCalculator.sunInfo
         val sunrise = Sunrise(
             sunInfo.sunrise?.toOffsetTime(),

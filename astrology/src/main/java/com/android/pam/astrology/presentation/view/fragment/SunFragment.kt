@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.android.pam.astrology.R
-import com.android.pam.astrology.di.component.DaggerAstrologyComponent
-import com.android.pam.astrology.di.module.ActivitiesModule
+import com.android.pam.astrology.presentation.contract.IAstrologyContract
 import com.android.pam.astrology.presentation.contract.ISunContract
 import com.android.pam.astrology.presentation.model.SunModel
 import kotlinx.android.synthetic.main.data_sun.*
@@ -62,10 +61,7 @@ class SunFragment : Fragment(), ISunContract.IView {
     }
 
     override fun onAttach(context: Context) {
-        DaggerAstrologyComponent.builder()
-            .activitiesModule(ActivitiesModule(requireActivity()))
-            .build()
-            .inject(this)
+        (activity as IAstrologyContract.IView).astrologyComponent().inject(this)
         super.onAttach(context)
     }
 

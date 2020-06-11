@@ -10,10 +10,9 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import com.android.pam.astrology.R
-import com.android.pam.astrology.di.component.DaggerAstrologyComponent
-import com.android.pam.astrology.di.module.ActivitiesModule
 import com.android.pam.astrology.domain.model.settings.Location
 import com.android.pam.astrology.domain.model.settings.Settings
+import com.android.pam.astrology.presentation.contract.IAstrologyContract
 import com.android.pam.astrology.presentation.contract.ISettingsContract
 import com.android.pam.astrology.presentation.filter.InputFilterOpenMinMax
 import com.android.pam.astrology.presentation.model.SettingsModel
@@ -75,10 +74,7 @@ class SettingsDialogFragment : DialogFragment(), ISettingsContract.IView {
     }
 
     override fun onAttach(context: Context) {
-        DaggerAstrologyComponent.builder()
-            .activitiesModule(ActivitiesModule(requireActivity()))
-            .build()
-            .inject(this)
+        (activity as IAstrologyContract.IView).astrologyComponent().inject(this)
         super.onAttach(context)
         presenter.onAttach()
         adapter = ArrayAdapter(context, R.layout.support_simple_spinner_dropdown_item, spinnerValues)
