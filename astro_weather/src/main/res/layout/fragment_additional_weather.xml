@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+
+    <TextView
+            android:id="@+id/awFragment_txv_windSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/aw_windSpeed" />
+
+    <TextView
+            android:id="@+id/awFragment_txv_windDeg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/aw_windDeg" />
+
+    <TextView
+            android:id="@+id/awFragment_txv_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/aw_humidity" />
+
+    <TextView
+            android:id="@+id/awFragment_txv_visibility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/aw_visibility" />
+</LinearLayout>

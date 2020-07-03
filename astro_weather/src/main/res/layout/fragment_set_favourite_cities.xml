@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ScrollView
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="0dp" android:layout_weight="1">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/sfcFragment_txv_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fc_id" />
+
+            <EditText
+                    android:id="@+id/sfcFragment_edt_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number" />
+
+            <TextView
+                    android:id="@+id/sfcFragment_txv_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fc_city" />
+
+            <EditText
+                    android:id="@+id/sfcFragment_edt_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textAutoCorrect"
+                    tools:text="Name" />
+
+            <TextView
+                    android:id="@+id/sfcFragment_txv_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fc_state" />
+
+            <EditText
+                    android:id="@+id/sfcFragment_edt_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textAutoCorrect"
+                    tools:text="Name" />
+
+            <TextView
+                    android:id="@+id/sfcFragment_txv_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fc_country" />
+
+            <EditText
+                    android:id="@+id/sfcFragment_edt_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textAutoCorrect"
+                    tools:text="Name" />
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+
+                <TextView
+                        android:id="@+id/sfcFragment_txv_favourite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fc_favourite" />
+
+                <Spinner
+                        android:id="@+id/sfcFragment_spn_favourite"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <Button
+                    android:id="@+id/sfcFragment_btn_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@android:string/search_go" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/sfcFragment_recv_cities"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+            android:id="@+id/sfcFragment_btn_finish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fc_finish"/>
+</LinearLayout>

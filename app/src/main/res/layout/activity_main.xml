@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" android:gravity="center">
 
     <Button
             android:id="@+id/button_calculator"
@@ -10,14 +10,8 @@
             android:text="@string/calculator_button_name" />
 
     <Button
-            android:id="@+id/button_astro"
+            android:id="@+id/button_astroWeather"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/astro_button_name" />
-
-    <Button
-            android:id="@+id/button_weather"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/weather_button_name" />
+            android:text="@string/astroWeather_button_name" />
 </LinearLayout>

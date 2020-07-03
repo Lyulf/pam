@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+            android:id="@+id/settingsFragment_txv_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_current_location" />
+
+    <Spinner
+            android:id="@+id/settingsFragment_spn_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    <Button
+            android:id="@+id/settingsFragment_btn_modifyFavourites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_modify_favourites" />
+
+    <TextView
+            android:id="@+id/settingsFragment_txv_refreshRate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_refreshRate" />
+
+    <Spinner
+            android:id="@+id/settingsFragment_spn_refreshRate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    <TextView
+            android:id="@+id/settingsFragment_txv_units"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_units" />
+
+    <Spinner
+            android:id="@+id/settingsFragment_spn_units"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    <Button
+            android:id="@+id/settingsFragment_btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_confirm_button" />
+
+</LinearLayout>

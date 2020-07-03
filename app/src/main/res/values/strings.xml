@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">PAM</string>
     <string name="calculator_button_name">Calculator</string>
-    <string name="astro_button_name">Astro</string>
-    <string name="weather_button_name">Weather</string>
+    <string name="astroWeather_button_name">AstroWeather</string>
 </resources>

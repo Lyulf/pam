@@ -12,8 +12,7 @@ class MainActivity : AppCompatActivity(), IMainActivity {
         setContentView(R.layout.activity_main)
 
         button_calculator.setOnClickListener { showCalculator() }
-        button_astro.setOnClickListener { showAstro() }
-        button_weather.setOnClickListener { showWeather() }
+        button_astroWeather.setOnClickListener { showAstroWeather() }
     }
 
     override fun showCalculator() {
@@ -25,11 +24,12 @@ class MainActivity : AppCompatActivity(), IMainActivity {
         }
     }
 
-    override fun showAstro() {
-        Toast.makeText(applicationContext, "Astro is not yet implemented", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun showWeather() {
-        Toast.makeText(applicationContext, "Weather is not yet implemented", Toast.LENGTH_SHORT).show()
+    override fun showAstroWeather() {
+        val launchIntent = packageManager.getLaunchIntentForPackage("com.android.astro_weather")
+        if(launchIntent != null) {
+            startActivity(launchIntent)
+        } else {
+            Toast.makeText(applicationContext, "Failed to start AstroWeather", Toast.LENGTH_SHORT).show()
+        }
     }
 }

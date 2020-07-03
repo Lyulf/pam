@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/weatherFragment_frag_basicWeather"
+            android:name="com.android.pam.astro_weather.presentation.view.fragment.BasicWeatherFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/weatherFragment_frag_forecast"
+            app:layout_constraintEnd_toStartOf="@+id/weatherFragment_frag_additionalWeather"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/weatherFragment_frag_additionalWeather"
+            android:name="com.android.pam.astro_weather.presentation.view.fragment.AdditionalWeatherFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/weatherFragment_frag_forecast"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/weatherFragment_frag_basicWeather"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/weatherFragment_frag_forecast"
+            android:name="com.android.pam.astro_weather.presentation.view.fragment.ForecastFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weatherFragment_frag_basicWeather" />
+</androidx.constraintlayout.widget.ConstraintLayout>

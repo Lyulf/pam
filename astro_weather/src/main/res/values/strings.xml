@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">AstroWeather</string>
+
+    <string name="action_refresh_name">Refresh</string>
+    <string name="action_settings_name">Settings</string>
+    <string name="action_time">Time: %s</string>
+
+<!--Settings-->
+    <string name="settings_current_location">Location</string>
+    <string name="settings_modify_favourites">Set Favourites</string>
+    <string name="settings_latitude">Latitude</string>
+    <string name="settings_longitude">Longitude</string>
+    <string name="settings_latitude_hint">(-90, 90)</string>
+    <string name="settings_longitude_hint">(-180, 180)</string>
+    <string name="settings_refreshRate">Refresh Rate (min)</string>
+    <string name="settings_units">Units</string>
+    <string name="settings_confirm_button">Save</string>
+
+<!--Sun-->
+    <string name="sun">Sun</string>
+    <string name="sunrise">Sunrise: %s</string>
+    <string name="sunset">Sunset: %s</string>
+    <string name="sunriseAzimuth">Sunrise Azimuth: %s</string>
+    <string name="sunsetAzimuth">Sunset Azimuth: %s</string>
+    <string name="civilDawn">Civil Dawn: %s</string>
+    <string name="civilDusk">Civil Dusk: %s</string>
+
+<!--Moon-->
+    <string name="moon">Moon</string>
+    <string name="moonrise">Moonrise: %s</string>
+    <string name="moonset">Moonset: %s</string>
+    <string name="fullMoon">Full Moon: %s</string>
+    <string name="newMoon">New Moon: %s</string>
+    <string name="moonPhase">Moon Phase: %s%%</string>
+    <string name="dayOfSynodicMonth">Day of synodic month: %s</string>
+
+<!--Basic Weather-->
+    <string name="bw_location">Location: %s</string>
+    <string name="bw_latitude">Latitude: %s</string>
+    <string name="bw_longitude">Longitude: %s</string>
+    <string name="bw_temperature">Temperature: %s</string>
+    <string name="bw_pressure">Pressure: %s</string>
+    <string name="bw_description">Weather: %s</string>
+
+<!--Additional Weather-->
+    <string name="aw_windSpeed">Wind Speed: %s</string>
+    <string name="aw_windDeg">Wind Degrees: %s</string>
+    <string name="aw_humidity">Humidity: %s</string>
+    <string name="aw_visibility">Visibility: %s</string>
+
+<!--Favourite Cities-->
+    <string name="fc_id">City Id</string>
+    <string name="fc_city">City</string>
+    <string name="fc_state">State</string>
+    <string name="fc_country">Country</string>
+    <string name="fc_latitude">Latitude</string>
+    <string name="fc_longitude">Longitude</string>
+    <string name="fc_id_format">id: %s</string>
+    <string name="fc_latitude_short">lat: %s</string>
+    <string name="fc_longitude_short">lon: %s</string>
+    <string name="fc_favourite">Favourite</string>
+    <string name="fc_finish">Finish</string>
+    <string name="aw_no_connection">Failed to download data.\nLast update %s</string>
+
+</resources>
